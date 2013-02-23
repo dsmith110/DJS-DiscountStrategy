@@ -15,6 +15,11 @@ public class Startup {
         cr.addItemToSale("A101", 1);
         cr.addItemToSale("C222", 1);
         cr.outputReceipt();
+        
+        CashRegister cr2 = new CashRegister();
+        cr.startNewSale("300");
+        cr.addItemToSale("A101", 1);
+        cr.outputReceipt();
     }
     
 }

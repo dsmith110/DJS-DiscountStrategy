@@ -6,6 +6,8 @@ package discountstrategy;
  */
 public class CashRegister {
     private Receipt receipt;
+    
+    // Playing around with these
     private OutputStrategy out;
     private InputStrategy in;
     
@@ -20,6 +22,7 @@ public class CashRegister {
         receipt.addLineItem(prodId, qty);
     }
     
+    // Can be done better, only this way for testing
     public void outputReceipt() {
         System.out.println(receipt.getFinalizedSale());
     }

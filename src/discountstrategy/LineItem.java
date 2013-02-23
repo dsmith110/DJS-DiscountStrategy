@@ -9,14 +9,13 @@ import java.text.NumberFormat;
 public class LineItem {
     private Product product;
     private int qty;
-    
-//    FakeDatabase fakeDatabase = new FakeDatabase();
 
     public LineItem(String prodId, int qty) {
         this.qty = qty;
         this.product = findProduct(prodId);
     }
 
+    // Looks in "db" for product information, if found assigns reference
     public final Product findProduct(String prodId) {
         // Validate
         FakeDatabase fakeDatabase = new FakeDatabase();
@@ -24,9 +23,11 @@ public class LineItem {
         return product;
     }
     
+    // Makes a string with all the line item details
     public String getLineItemDetails() {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         String lineItemDetails = 
+                // Used for padding (makes outputs nice)
                 String.format("%-8s %-18s %8s %8s %10s %8s", 
                 this.getProductId(),
                 this.getProductName(),
