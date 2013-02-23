@@ -11,6 +11,7 @@ public class Receipt {
     private double tax = .055;
     private Customer customer;
     private LineItem[] lineItems = new LineItem[0];
+    
     FakeDatabase fakeDatabase = new FakeDatabase();
     
     public Receipt() {
@@ -50,11 +51,7 @@ public class Receipt {
     }
     
     public double getAmountSaved() {
-        double amtSaved = 0;
-        for(LineItem li : lineItems) {
-            amtSaved += li.getDiscountAmt();
-        }
-        return amtSaved;
+        return this.getGrandTotal() - this.getDiscountedTotal();
     }
     
     public double getTaxTotal() {
@@ -63,7 +60,7 @@ public class Receipt {
     
     public String getFinalizedSale() {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
-        String finalString = "Thank you for shopping at Kohl's\n\n" +
+        String finalString = "\nThank you for shopping at Kohl's\n\n" +
                 "Customer name: " + customer.getName() + "\n" +
                 "Receipt Number: " + receiptNo + "\n\n" +
                 getHeader();

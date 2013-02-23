@@ -6,6 +6,8 @@ package discountstrategy;
  */
 public class CashRegister {
     private Receipt receipt;
+    private OutputStrategy out;
+    private InputStrategy in;
     
     public CashRegister() {}
     
@@ -18,12 +20,28 @@ public class CashRegister {
         receipt.addLineItem(prodId, qty);
     }
     
-    public String finalizeSale() {
-        return receipt.getFinalizedSale();
+    public void outputReceipt() {
+        System.out.println(receipt.getFinalizedSale());
     }
     
     public Receipt getReceipt() {
         return receipt;
+    }
+
+    public OutputStrategy getOutputStrategy() {
+        return out;
+    }
+
+    public void setOutputStrategy(OutputStrategy out) {
+        this.out = out;
+    }
+
+    public InputStrategy getInputStrategy() {
+        return in;
+    }
+
+    public void setInputStrategy(InputStrategy in) {
+        this.in = in;
     }
     
 }
