@@ -8,7 +8,7 @@ public class Product {
     private String prodId;
     private String prodName;
     private double unitPrice;
-    private DiscountStrategy discount;
+    private DiscountStrategy discount = new NoDiscount();
 
     public Product() {
     }

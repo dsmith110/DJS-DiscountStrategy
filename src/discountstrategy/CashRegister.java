@@ -24,7 +24,7 @@ public class CashRegister {
     
     // Can be done better, only this way for testing
     public void outputReceipt() {
-        System.out.println(receipt.getFinalizedSale());
+        System.out.println(receipt.getFinalizedSaleString());
     }
     
     public Receipt getReceipt() {

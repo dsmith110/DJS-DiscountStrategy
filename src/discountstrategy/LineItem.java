@@ -1,5 +1,7 @@
 package discountstrategy;
-
+/*
+ * Make method static that class can access
+ */
 
 import java.text.NumberFormat;
 /**

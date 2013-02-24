@@ -81,7 +81,7 @@ public class Receipt {
     }
     
     // Seperate class?
-    public String getFinalizedSale() {
+    public String getFinalizedSaleString() {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         String finalString = "\nThank you for shopping at Kohl's\n\n" +
                 "Customer name: " + customer.getName() + "\n" +
@@ -153,6 +153,6 @@ public class Receipt {
         r.findCustomer("100");
         r.addLineItem("A101", 2);
         r.addLineItem("B205", 2);
-        System.out.println(r.getFinalizedSale());
+        System.out.println(r.getFinalizedSaleString());
     }
 }
