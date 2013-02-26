@@ -28,12 +28,14 @@ public class Receipt {
     
     // Instantiates new LineItem and sends info to addToArray
     public void addLineItem(String product, int qty) {
+        // Needs validation
         LineItem item = new LineItem(product, qty);
         addToArray(item);
     }
     
     // Resizes array and adds new LineItem to it
     private void addToArray(LineItem item) {
+        // Needs validation
         // Makes temp array bigger than lineItems by 1
         LineItem[] tempItems = new LineItem[lineItems.length + 1];
         System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
@@ -96,14 +98,22 @@ public class Receipt {
     }
     
     public void setCustomer(Customer c) {
+        // Needs validation
         this.customer = c;
     }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+    
+    
 
     public static int getReceiptNo() {
         return receiptNo;
     }
 
     public static void setReceiptNo(int receiptNo) {
+        // Needs validation
         Receipt.receiptNo = receiptNo;
     }
 
@@ -112,6 +122,7 @@ public class Receipt {
     }
 
     public void setTax(double tax) {
+        // Needs validation
         this.tax = tax;
     }
 
@@ -120,6 +131,7 @@ public class Receipt {
     }
 
     public void setFs(FormatStrategy fs) {
+        // Needs validation
         this.fs = fs;
     }
 }

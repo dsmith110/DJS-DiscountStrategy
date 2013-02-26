@@ -17,6 +17,11 @@ public class FormatForMonitor implements FormatStrategy{
         return header;
     }
 
+    /*
+     * Only need to pass Receipt
+     * -------------------------
+     * Fix later
+     */
     @Override
     public String getFormattedData(LineItem[] lineItems, Customer customer, int receiptNo, Receipt receipt) {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
