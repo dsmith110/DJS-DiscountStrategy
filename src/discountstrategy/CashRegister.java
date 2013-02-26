@@ -14,6 +14,7 @@ public class CashRegister {
     public CashRegister() {}
     
     public void startNewSale(String custId) {
+        // needs validation
         receipt = new Receipt();
         receipt.findCustomer(custId);
     }

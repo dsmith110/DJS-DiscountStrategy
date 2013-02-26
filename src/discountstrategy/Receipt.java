@@ -1,17 +1,15 @@
 package discountstrategy;
 
-import java.text.NumberFormat;
-
 /**
  *
  * @author Dan Smith
  */
 public class Receipt {
-    // There can be only one
+
     private static int receiptNo;
-    // Not sure if this should go here
     private double tax = .055;
     
+    private FormatStrategy fs = new FormatForMonitor();
     private Customer customer;
     private LineItem[] lineItems = new LineItem[0];
     
@@ -24,6 +22,7 @@ public class Receipt {
     
     // Sets customer reference if it finds in "db" from Id
     public void findCustomer(String custId) {
+        // Needs validation
         this.setCustomer(fakeDatabase.findCustomer(custId));
     }
     
@@ -37,7 +36,6 @@ public class Receipt {
     private void addToArray(LineItem item) {
         // Makes temp array bigger than lineItems by 1
         LineItem[] tempItems = new LineItem[lineItems.length + 1];
-        // Not sure what this does
         System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
         // Sets a reference in temp array to lineItems index
         tempItems[lineItems.length] = item;
@@ -45,7 +43,6 @@ public class Receipt {
         lineItems = tempItems;
     }
     
-    // Not sure if this should go here
     public double getGrandTotal() {
         double gTotal = 0;
         for(LineItem li : lineItems) {
@@ -61,7 +58,7 @@ public class Receipt {
         }
         return sTotal;
     }
-    // Not sure if this should go here
+
     public double getDiscountedTotal() {
         double dTotal = 0;
         for(LineItem li : lineItems) {
@@ -70,46 +67,16 @@ public class Receipt {
         return dTotal;
     }
     
-    // Not sure if this should go here
     public double getAmountSaved() {
         return this.getGrandTotal() - this.getDiscountedTotal();
     }
     
-    // Not sure if this should go here
     public double getTaxTotal() {
         return this.getGrandTotal() * tax;
     }
     
-    // Seperate class?
     public String getFinalizedSaleString() {
-        NumberFormat nf = NumberFormat.getCurrencyInstance();
-        String finalString = "\nThank you for shopping at Kohl's\n\n" +
-                "Customer name: " + customer.getName() + "\n" +
-                "Receipt Number: " + receiptNo + "\n\n" +
-                getHeader();
-        for(LineItem li : lineItems) { 
-            finalString += li.getLineItemDetails();
-        }
-        finalString += "\n\n" + String.format("%57s %7s", "Subtotal: ", 
-                nf.format(this.getSubTotal()));
-        finalString += "\n" + String.format("%57s %7s", "Tax: ", 
-                nf.format(this.getTaxTotal()));
-        finalString += "\n" + String.format("%65s", "-------------");
-        finalString += "\n" + String.format("%57s %7s", "Total Due: ", 
-                nf.format(this.getDiscountedTotal() + this.getTaxTotal()));
-        finalString += "\n\n" + String.format("%57s %7s", "You Saved: ",
-                nf.format(this.getAmountSaved()));
-        
-        return finalString;
-    }
-    
-    // Seperate class?
-    public String getHeader() {
-        String header = String.format("%-8s %-18s %8s %8s %10s %8s",
-                "Id", "Description", "Qty", "Price", "Discount", "Total") + "\n";
-        header += "---------------------------------------------------------" +
-                "--------\n";
-        return header;
+        return fs.getFormattedData(lineItems, customer, receiptNo, this);
     }
     
     public void setCustomerName(String custName) {
@@ -147,12 +114,12 @@ public class Receipt {
     public void setTax(double tax) {
         this.tax = tax;
     }
-    
-    public static void main(String[] args) {
-        Receipt r = new Receipt();
-        r.findCustomer("100");
-        r.addLineItem("A101", 2);
-        r.addLineItem("B205", 2);
-        System.out.println(r.getFinalizedSaleString());
+
+    public FormatStrategy getFs() {
+        return fs;
+    }
+
+    public void setFs(FormatStrategy fs) {
+        this.fs = fs;
     }
 }

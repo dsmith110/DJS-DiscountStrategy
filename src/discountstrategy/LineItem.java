@@ -25,25 +25,9 @@ public class LineItem {
         return product;
     }
     
-    // Makes a string with all the line item details
-    public String getLineItemDetails() {
-        NumberFormat nf = NumberFormat.getCurrencyInstance();
-        String lineItemDetails = 
-                // Used for padding (makes outputs nice)
-                String.format("%-8s %-18s %8s %8s %10s %8s", 
-                this.getProductId(),
-                this.getProductName(),
-                this.getQty(),
-                nf.format(this.getPriceBeforeDiscount()),
-                nf.format(this.getDiscountAmt()),
-                nf.format(this.getDiscountedPrice())) + "\n";
-        return lineItemDetails;
-    }
-    
     public Product getProduct() {
         return product;
     }
-
 
     public int getQty() {
         return qty;
@@ -76,14 +60,5 @@ public class LineItem {
     public double getDiscountedPrice() {
         return getPriceBeforeDiscount() - getDiscountAmt();
     }
-    
-    
-    
-    public static void main(String[] args) {
-        LineItem test = new LineItem("A101", 2);
-        System.out.println(test.getPriceBeforeDiscount());
-        System.out.println(test.getDiscountAmt());
-        System.out.println(test.getDiscountedPrice());
-        
-    }
+
 }

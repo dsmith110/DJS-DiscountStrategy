@@ -4,7 +4,8 @@ package discountstrategy;
  *
  * @author Dan Smith
  */
-public class FakeDatabase {
+public class FakeDatabase  {
+    
     private Customer[] customers = {
         new Customer("100", "John Smith"),
         new Customer("200", "Sally Jones"),
