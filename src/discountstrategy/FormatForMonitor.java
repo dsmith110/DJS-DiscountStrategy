@@ -23,14 +23,14 @@ public class FormatForMonitor implements FormatStrategy{
      * Fix later
      */
     @Override
-    public String getFormattedData(LineItem[] lineItems, Customer customer, int receiptNo, Receipt receipt) {
+    public String getFormattedData(Receipt receipt) {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         String finalString = "\nThank you for shopping at Kohl's\n\n"
-                + "Customer name: " + customer.getName() + "\n"
-                + "Receipt Number: " + receiptNo + "\n"
+                + "Customer name: " + receipt.getCustomer().getName() + "\n"
+                + "Receipt Number: " + receipt.getReceiptNo() + "\n"
                 + "Date: " + new Date().toString() + "\n\n"
                 + getHeader();
-        for (LineItem li : lineItems) {
+        for (LineItem li : receipt.getLineItems()) {
             // Used for padding (makes outputs nice)
             finalString += String.format("%-8s %-18s %8s %8s %10s %8s",
                     li.getProductId(),

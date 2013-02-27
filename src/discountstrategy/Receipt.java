@@ -78,7 +78,7 @@ public class Receipt {
     }
     
     public String getFinalizedSaleString() {
-        return fs.getFormattedData(lineItems, customer, receiptNo, this);
+        return fs.getFormattedData(this);
     }
     
     public void setCustomerName(String custName) {
@@ -91,6 +91,14 @@ public class Receipt {
     
     public String getCustomerName() {
         return customer.getName();
+    }
+
+    public LineItem[] getLineItems() {
+        return lineItems;
+    }
+
+    public void setLineItems(LineItem[] lineItems) {
+        this.lineItems = lineItems;
     }
     
     public String getCustomerId() {
