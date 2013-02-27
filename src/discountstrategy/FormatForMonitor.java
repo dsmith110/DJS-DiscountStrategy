@@ -20,7 +20,6 @@ public class FormatForMonitor implements FormatStrategy{
     /*
      * Only need to pass Receipt
      * -------------------------
-     * Fix later
      */
     @Override
     public String getFormattedData(Receipt receipt) {

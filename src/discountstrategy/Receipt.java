@@ -39,7 +39,7 @@ public class Receipt {
         // Makes temp array bigger than lineItems by 1
         LineItem[] tempItems = new LineItem[lineItems.length + 1];
         System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
-        // Sets a reference in temp array to lineItems index
+        // Adds the item to the temp array
         tempItems[lineItems.length] = item;
         // Sets reference pointer to newly made array
         lineItems = tempItems;
