@@ -120,13 +120,11 @@ public class Receipt {
         return customer;
     }
     
-    
-
-    public static int getReceiptNo() {
+    public int getReceiptNo() {
         return receiptNo;
     }
 
-    public static void setReceiptNo(int receiptNo) {
+    public void setReceiptNo(int receiptNo) {
         // Needs validation
         Receipt.receiptNo = receiptNo;
     }

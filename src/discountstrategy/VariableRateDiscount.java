@@ -20,13 +20,13 @@ public class VariableRateDiscount implements DiscountStrategy {
     }
     
     /**
-     * Constructor that accepts a rate as an arguement.
+     * Constructor that accepts a rate as an argument.
      * @param rate - cannot be less than zero otherwise it will throw an
      * unsupported exception.
      */
     public VariableRateDiscount(double rate) {
         if(rate < 0) {
-            throw new UnsupportedOperationException("");
+            throw new UnsupportedOperationException("TO DO");
         } else {
             discountRate = rate;
         }

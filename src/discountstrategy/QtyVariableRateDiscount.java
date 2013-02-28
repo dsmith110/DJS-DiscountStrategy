@@ -33,7 +33,7 @@ public class QtyVariableRateDiscount implements DiscountStrategy {
         if(rate < 0) {
             this.setDiscountRate(rate);
         } else {
-            throw new UnsupportedOperationException("");
+            throw new UnsupportedOperationException("TO DO");
         }
         
     }
@@ -50,7 +50,7 @@ public class QtyVariableRateDiscount implements DiscountStrategy {
             discountRate = rate;
             minQty = qty;
         } else {
-            throw new UnsupportedOperationException("");
+            throw new UnsupportedOperationException("TO DO");
         }
     }
     

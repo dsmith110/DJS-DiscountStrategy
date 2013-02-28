@@ -64,10 +64,10 @@ public class Product {
     }
     
     
-    public static void main(String[] args) {
-        Product test = new Product("101", "Hat", 10);
-        test.setDiscount(new VariableRateDiscount());
-        System.out.println(test.getDiscountAmt(1));
-    }
+//    public static void main(String[] args) {
+//        Product test = new Product("101", "Hat", 10);
+//        test.setDiscount(new VariableRateDiscount());
+//        System.out.println(test.getDiscountAmt(1));
+//    }
     
 }
