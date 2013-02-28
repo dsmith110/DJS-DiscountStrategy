@@ -27,7 +27,7 @@ public class FormatForMonitor implements FormatStrategy{
         String finalString = "\nThank you for shopping at Kohl's\n\n"
                 + "Customer name: " + receipt.getCustomer().getName() + "\n"
                 + "Receipt Number: " + receipt.getReceiptNo() + "\n"
-                + "Date: " + new Date().toString() + "\n\n"
+                + "Date: " + receipt.getFormattedDate() + "\n\n"
                 + getHeader();
         for (LineItem li : receipt.getLineItems()) {
             // Used for padding (makes outputs nice)

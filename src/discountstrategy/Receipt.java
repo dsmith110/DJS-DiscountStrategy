@@ -1,5 +1,9 @@
 package discountstrategy;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  *
  * @author Dan Smith
@@ -9,6 +13,7 @@ public class Receipt {
     private static int receiptNo;
     private double tax = .055;
     
+    private Date date;
     private FormatStrategy fs = new FormatForMonitor();
     private Customer customer;
     private LineItem[] lineItems = new LineItem[0];
@@ -142,4 +147,22 @@ public class Receipt {
         // Needs validation
         this.fs = fs;
     }
+
+    public String getFormattedDate() {
+        String format = "MM/dd/yyyy hh:mm a";
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        Calendar c = Calendar.getInstance();
+        date = c.getTime();
+        String formatedDate = sdf.format(date);
+        return formatedDate;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
+    
 }
