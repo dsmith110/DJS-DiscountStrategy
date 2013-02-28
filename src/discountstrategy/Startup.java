@@ -3,6 +3,7 @@ package discountstrategy;
 /**
  *
  * @author Dan Smith
+ * @version 1.00
  */
 public class Startup {
     

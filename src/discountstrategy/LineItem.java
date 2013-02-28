@@ -1,12 +1,9 @@
 package discountstrategy;
-/*
- * Make method static that class can access
- */
 
-import java.text.NumberFormat;
 /**
  *
  * @author Dan Smith
+ * @version 1.00
  */
 public class LineItem {
     private Product product;

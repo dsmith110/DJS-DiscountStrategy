@@ -1,17 +1,37 @@
 package discountstrategy;
 
 /**
- *
+ * This class implements the discount strategy interface and can apply a 
+ * variable rate discount to a product, which is assigned a default of %15.
+ * The default value can be changed with setDiscountRate or via the constructor.
  * @author Dan Smith
+ * @version 1.00
  */
 public class VariableRateDiscount implements DiscountStrategy {
-    private double discountRate = .15;
-
-    public VariableRateDiscount() {}
     
-    public VariableRateDiscount(double rate) {
-        discountRate = rate;
+    private double discountRate;
+
+    /**
+     * Default constructor that gives the discount rate a default value of
+     * %15.
+     */
+    public VariableRateDiscount() {
+        discountRate = .15;
     }
+    
+    /**
+     * Constructor that accepts a rate as an arguement.
+     * @param rate - cannot be less than zero otherwise it will throw an
+     * unsupported exception.
+     */
+    public VariableRateDiscount(double rate) {
+        if(rate < 0) {
+            throw new UnsupportedOperationException("");
+        } else {
+            discountRate = rate;
+        }
+    }
+    
     @Override
     public double getDiscountAmt(double unitPrice, int qty) {
         return unitPrice * qty * discountRate;
@@ -27,9 +47,9 @@ public class VariableRateDiscount implements DiscountStrategy {
         this.discountRate = discountRate;
     }
     
-    public static void main(String[] args) {
-        VariableRateDiscount test = new VariableRateDiscount(0.10);
-        System.out.println("Discount: " + test.getDiscountAmt(10, 2));
-    }
+//    public static void main(String[] args) {
+//        VariableRateDiscount test = new VariableRateDiscount(0.10);
+//        System.out.println("Discount: " + test.getDiscountAmt(10, 2));
+//    }
     
 }

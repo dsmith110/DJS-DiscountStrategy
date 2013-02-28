@@ -12,6 +12,7 @@ public class Receipt {
 
     private static int receiptNo;
     private double tax = .055;
+    private String format = "MM/dd/yyyy hh:mm a";
     
     private Date date;
     private FormatStrategy fs = new FormatForMonitor();
@@ -149,7 +150,6 @@ public class Receipt {
     }
 
     public String getFormattedDate() {
-        String format = "MM/dd/yyyy hh:mm a";
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         Calendar c = Calendar.getInstance();
         date = c.getTime();
