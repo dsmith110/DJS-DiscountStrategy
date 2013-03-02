@@ -32,9 +32,21 @@ public class VariableRateDiscount implements DiscountStrategy {
         }
     }
     
+    /**
+     * Overridden method from DiscountStrategy interface that calculates the
+     * discount of the product based on unit price and quantity.
+     * @param unitPrice - must be greater than 0 or else throws exception
+     * @param qty - must be greater than 0 or else throws exception
+     * @return - the discounted amount
+     */
     @Override
     public double getDiscountAmt(double unitPrice, int qty) {
-        return unitPrice * qty * discountRate;
+        // Validation
+        if(unitPrice < 0 || qty < 0) {
+            throw new UnsupportedOperationException("TO DO");
+        } else {
+            return unitPrice * qty * discountRate;
+        }
     }
     
     @Override

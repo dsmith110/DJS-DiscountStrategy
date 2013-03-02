@@ -1,7 +1,8 @@
 package discountstrategy;
 
 /**
- *
+ * This class delegates to the receipt class. It has a receipt property and 
+ * input and output properties. 
  * @author Dan Smith
  * @version 1.00
  */
@@ -14,6 +15,12 @@ public class CashRegister {
     
     public CashRegister() {}
     
+    /**
+     * Accepts a string customer Id as an argument. Instantiates a receipt
+     * object and assigns it to receipt property. Also calls the findCustomer
+     * method and passes the customer Id to it.
+     * @param custId - must be a valid string in the correct format
+     */
     public void startNewSale(String custId) {
         // needs validation
         receipt = new Receipt();

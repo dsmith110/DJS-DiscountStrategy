@@ -2,8 +2,10 @@ package discountstrategy;
 
 import java.util.Scanner;
 /**
- *
+ * Used to manually input data with a keyboard. Implements InputStrategy, so it
+ * must override the methods from that interface.
  * @author Dan Smith
+ * @version 1.00
  */
 public class KeyboardInput implements InputStrategy {
     Scanner keyboard = new Scanner(System.in);

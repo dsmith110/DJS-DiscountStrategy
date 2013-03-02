@@ -1,8 +1,10 @@
 package discountstrategy;
 
 /**
- *
+ * Class holds information about the product Id, product name, unit price of the
+ * product and the discount strategy applied to the product.
  * @author Dan Smith
+ * @version 1.00
  */
 public class Product {
     private String prodId;
@@ -10,10 +12,17 @@ public class Product {
     private double unitPrice;
     private DiscountStrategy discount = new NoDiscount();
 
-    public Product() {
-    }
+    public Product() {}
 
+    /**
+     * Constructor accepts product Id, product name, and unit price as arguments
+     * and assigns them to the respective properties in the class.
+     * @param prodId - must be valid string
+     * @param prodName - must be valid string
+     * @param unitPrice - must be greater than 0
+     */
     public Product(String prodId, String prodName, double unitPrice) {
+        // Needs validation
         this.prodId = prodId;
         this.prodName = prodName;
         this.unitPrice = unitPrice;
@@ -27,8 +36,19 @@ public class Product {
         this.discount = discount;
     }
 
+    /**
+     * Used to calculate the discounted amount of the product. Accepts a quantity
+     * as an argument, which must be greater than 0, and returns a the discounted
+     * amount.
+     * @param qty - Must be greater than 0
+     * @return - discounted amount of the product
+     */
     public double getDiscountAmt(int qty) {
-        return discount.getDiscountAmt(unitPrice, qty);
+        if(qty < 0) {
+            throw new UnsupportedOperationException("TO DO");
+        } else {
+            return discount.getDiscountAmt(unitPrice, qty);
+        }
     }
     
     public String getProdId() {

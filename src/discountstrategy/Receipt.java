@@ -5,8 +5,13 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- *
+ * This class holds information about receipt numbers, tax calculated from sale,
+ * format string for formatting dates output on the receipt, a date property,
+ * format strategy for displaying the receipt, a customer property to display 
+ * customer info on receipt, and an array of line items. Class also calculates
+ * grand total, subtotal, discounted total.
  * @author Dan Smith
+ * @version 1.00
  */
 public class Receipt {
 
@@ -20,8 +25,12 @@ public class Receipt {
     private LineItem[] lineItems = new LineItem[0];
     
     // Needed to lookup customer information
-    FakeDatabase fakeDatabase = new FakeDatabase();
+    private FakeDatabase fakeDatabase = new FakeDatabase();
     
+    /**
+     * Default constructor adds one to the receipt number every time a receipt
+     * is created.
+     */
     public Receipt() {
         receiptNo++;
     }
@@ -32,14 +41,22 @@ public class Receipt {
         this.setCustomer(fakeDatabase.findCustomer(custId));
     }
     
-    // Instantiates new LineItem and sends info to addToArray
+    /**
+     * Method creates a lineItem based on product and quantity arguments.
+     * If the lineItem is instantiated, it then passes the item to addToArray
+     * method.
+     * @param product - Must be in correct format
+     * @param qty - Must be greater than 0.
+     */
     public void addLineItem(String product, int qty) {
         // Needs validation
         LineItem item = new LineItem(product, qty);
         addToArray(item);
     }
     
-    // Resizes array and adds new LineItem to it
+    /*
+     * Private method 
+     */
     private void addToArray(LineItem item) {
         // Needs validation
         // Makes temp array bigger than lineItems by 1
@@ -51,6 +68,11 @@ public class Receipt {
         lineItems = tempItems;
     }
     
+    /**
+     * Method used to calculate grand total of all the lineItems before the 
+     * discounts are applied to the products.
+     * @return - grand total of all products
+     */
     public double getGrandTotal() {
         double gTotal = 0;
         for(LineItem li : lineItems) {

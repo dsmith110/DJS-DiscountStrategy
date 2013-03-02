@@ -1,8 +1,10 @@
 package discountstrategy;
 
 /**
- *
+ * Class applies no discount to an item that is passed. It is implementing the
+ * DiscountStrategy interface so it must override all those methods.
  * @author Dan Smith
+ * @version 1.00
  */
 public class NoDiscount implements DiscountStrategy {
     private final int DISCOUNT = 0;

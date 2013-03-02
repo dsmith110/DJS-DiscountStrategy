@@ -1,12 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package discountstrategy;
 
 /**
- *
- * @author dsmith110
+ * Interface that low level classes implement to calculate the discount applied
+ * to a product. Implementations will vary, but the classes must override these
+ * methods.
+ * @author Dan Smith
+ * @version 1.00
  */
 public interface DiscountStrategy {
 
