@@ -1,5 +1,6 @@
 package discountstrategy;
 
+import java.util.*;
 /**
  * Class simulates a database with methods to locate and return information
  * about customers and products. It also has methods to "query" for information
@@ -8,6 +9,9 @@ package discountstrategy;
  * @version 1.00
  */
 public class FakeDatabase  {
+    // Trying out Maps
+    private Map custMap = new HashMap();
+    private Map prodMap = new HashMap();
     
     private Customer[] customers = {
         new Customer("100", "John Smith"),
@@ -21,6 +25,14 @@ public class FakeDatabase  {
         new Product("C222", "Women's Socks", 9.50, new NoDiscount())
     };
 
+    public FakeDatabase() {
+        for(Product p : products) {
+            prodMap.put(p.getProdId(), p);
+        }
+        for(Customer c : customers) {
+            custMap.put(c.getCustId(), c);
+        }
+    }
     /**
      * Accepts a customer Id string as an argument and "queries" the database.
      * If the customer is found it returns information about that customer.
@@ -30,12 +42,13 @@ public class FakeDatabase  {
     public final Customer findCustomer(final String custId) {
         // validation is needed
         Customer customer = null;
-        for (Customer c : customers) {
-            if (custId.equals(c.getCustId())) {
-                customer = c;
-                break;
-            }
-        }
+//        for (Customer c : customers) {
+//            if (custId.equals(c.getCustId())) {
+//                customer = c;
+//                break;
+//            }
+//        }
+        customer = (Customer)custMap.get(custId);
 
         return customer;
     }
@@ -49,12 +62,13 @@ public class FakeDatabase  {
     public final Product findProduct(final String prodId) {
         // validation is needed
         Product product = null;
-        for (Product p : products) {
-            if (prodId.equals(p.getProdId())) {
-                product = p;
-                break;
-            }
-        }
+//        for (Product p : products) {
+//            if (prodId.equals(p.getProdId())) {
+//                product = p;
+//                break;
+//            }
+//        }
+        product = (Product)prodMap.get(prodId);
 
         return product;
     }
