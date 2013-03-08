@@ -30,12 +30,7 @@ public class QtyVariableRateDiscount implements DiscountStrategy {
      * @param rate - If rate is less than zero throws new unsupported exception.
      */
     public QtyVariableRateDiscount(double rate) {
-        if(rate < 0) {
             this.setDiscountRate(rate);
-        } else {
-            throw new UnsupportedOperationException("TO DO");
-        }
-        
     }
     
     /**
@@ -46,12 +41,8 @@ public class QtyVariableRateDiscount implements DiscountStrategy {
      * @param qty - must be zero or above or throws exception
      */
     public QtyVariableRateDiscount(double rate, int qty) {
-        if(rate < 0 || qty < 0) {
             discountRate = rate;
             minQty = qty;
-        } else {
-            throw new UnsupportedOperationException("TO DO");
-        }
     }
     
     @Override
