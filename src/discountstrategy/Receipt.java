@@ -1,8 +1,10 @@
 package discountstrategy;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * This class holds information about receipt numbers, tax calculated from sale,
@@ -22,7 +24,8 @@ public class Receipt {
     private Date date;
     private FormatStrategy fs = new FormatForMonitor();
     private Customer customer;
-    private LineItem[] lineItems = new LineItem[0];
+    private List<LineItem> lineItems = new ArrayList<LineItem>();
+//    private LineItem[] lineItems = new LineItem[0];
     
     // Needed to lookup customer information
     private FakeDatabase fakeDatabase = new FakeDatabase();
@@ -59,13 +62,14 @@ public class Receipt {
      */
     private void addToArray(LineItem item) {
         // Needs validation
+        lineItems.add(item);
         // Makes temp array bigger than lineItems by 1
-        LineItem[] tempItems = new LineItem[lineItems.length + 1];
-        System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
-        // Adds the item to the temp array
-        tempItems[lineItems.length] = item;
-        // Sets reference pointer to newly made array
-        lineItems = tempItems;
+//        LineItem[] tempItems = new LineItem[lineItems.length + 1];
+//        System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
+//        // Adds the item to the temp array
+//        tempItems[lineItems.length] = item;
+//        // Sets reference pointer to newly made array
+//        lineItems = tempItems;
     }
     
     /**
@@ -121,13 +125,21 @@ public class Receipt {
         return customer.getName();
     }
 
-    public LineItem[] getLineItems() {
+    public List<LineItem> getLineItems() {
         return lineItems;
     }
 
-    public void setLineItems(LineItem[] lineItems) {
+    public void setLineItems(List<LineItem> lineItems) {
         this.lineItems = lineItems;
     }
+
+//    public LineItem[] getLineItems() {
+//        return lineItems;
+//    }
+//
+//    public void setLineItems(LineItem[] lineItems) {
+//        this.lineItems = lineItems;
+//    }
     
     public String getCustomerId() {
         return customer.getCustId();
